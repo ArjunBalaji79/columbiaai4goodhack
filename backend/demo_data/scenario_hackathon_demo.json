@@ -1,0 +1,355 @@
+{
+  "scenario_id": "hackathon_demo",
+  "scenario_name": "Metro City Earthquake - Hackathon Demo",
+  "description": "Optimized demo sequence for hackathon video presentation. Shows signal ingestion, contradiction detection, misinformation filtering, and resource allocation with visible tradeoffs.",
+  "city_name": "Metro City",
+  "map_center": {"lat": 37.78, "lng": -122.41},
+  "map_zoom": 13,
+  "demo_compression": 30,
+  "initial_event": {
+    "type": "earthquake",
+    "magnitude": 6.8,
+    "epicenter": {"lat": 37.78, "lng": -122.42},
+    "depth_km": 10
+  },
+  "duration_minutes": 90,
+  "initial_resources": {
+    "ambulances": [
+      {"id": "AMB-1", "sector": "1", "status": "available"},
+      {"id": "AMB-2", "sector": "1", "status": "available"},
+      {"id": "AMB-3", "sector": "2", "status": "available"},
+      {"id": "AMB-4", "sector": "2", "status": "available"},
+      {"id": "AMB-5", "sector": "3", "status": "available"},
+      {"id": "AMB-6", "sector": "3", "status": "available"},
+      {"id": "AMB-7", "sector": "4", "status": "available"},
+      {"id": "AMB-8", "sector": "4", "status": "available"},
+      {"id": "AMB-9", "sector": "5", "status": "available"},
+      {"id": "AMB-10", "sector": "5", "status": "available"},
+      {"id": "AMB-11", "sector": "1", "status": "available"},
+      {"id": "AMB-12", "sector": "3", "status": "available"}
+    ],
+    "fire_trucks": [
+      {"id": "ENGINE-1", "sector": "1", "status": "available"},
+      {"id": "ENGINE-2", "sector": "2", "status": "available"},
+      {"id": "ENGINE-3", "sector": "3", "status": "available"},
+      {"id": "ENGINE-4", "sector": "4", "status": "available"},
+      {"id": "LADDER-1", "sector": "1", "status": "available"},
+      {"id": "LADDER-2", "sector": "3", "status": "available"}
+    ],
+    "search_teams": [
+      {"id": "SAR-1", "sector": "1", "personnel": 6, "status": "available"},
+      {"id": "SAR-2", "sector": "2", "personnel": 6, "status": "available"},
+      {"id": "SAR-3", "sector": "3", "personnel": 6, "status": "available"},
+      {"id": "SAR-4", "sector": "4", "personnel": 6, "status": "available"}
+    ],
+    "helicopters": [
+      {"id": "HELI-1", "sector": "central", "status": "available"},
+      {"id": "HELI-2", "sector": "central", "status": "available"}
+    ]
+  },
+  "initial_locations": [
+    {
+      "id": "loc_metro_general",
+      "location_type": "hospital",
+      "name": "Metro General Hospital",
+      "lat": 37.7850,
+      "lng": -122.4050,
+      "capacity_total": 200,
+      "capacity_used": 90,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_st_marys",
+      "location_type": "hospital",
+      "name": "St. Mary's Medical",
+      "lat": 37.7620,
+      "lng": -122.4180,
+      "capacity_total": 150,
+      "capacity_used": 45,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_county_medical",
+      "location_type": "hospital",
+      "name": "County Medical Center",
+      "lat": 37.7480,
+      "lng": -122.4120,
+      "capacity_total": 100,
+      "capacity_used": 20,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_main_bridge",
+      "location_type": "bridge",
+      "name": "Main Street Bridge",
+      "lat": 37.7800,
+      "lng": -122.4100,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_market_building",
+      "location_type": "building",
+      "name": "500 Market Street",
+      "lat": 37.7900,
+      "lng": -122.4020,
+      "status": "damaged",
+      "accessibility": "blocked"
+    }
+  ],
+  "events": [
+    {
+      "_comment": "=== PHASE 1: INITIAL CHAOS (0-30s) ===",
+      "time_offset_seconds": 3,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.790, "lng": -122.402, "sector": "4"},
+        "content": "CATASTROPHIC DAMAGE: Multi-story pancake collapse at 500 Market Street. Building floors 2-4 completely compressed. Heavy concrete debris field extending across full city block. Active fire visible in eastern section with heavy black smoke. Structural instability visible. Estimated 5-50 people potentially trapped based on building occupancy records.",
+        "source_type": "first_responder_camera",
+        "metadata": {"source": "Unit_7_bodycam", "confidence_hint": 0.89, "asset_file": "collapse_market_street.png"}
+      }
+    },
+    {
+      "time_offset_seconds": 8,
+      "demo_delay_seconds": 1.2,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.772, "lng": -122.418, "sector": "3"},
+        "content": "SEVERE DAMAGE: Active structure fire in residential district. Two-alarm fire engulfing 3-story apartment building at Oak Street. Flames visible through multiple windows. Heavy smoke column rising 200+ feet. Fire spreading to adjacent row houses. Possible gas line involvement - smell reported by ground units.",
+        "source_type": "drone",
+        "metadata": {"source": "Drone_Alpha_2", "confidence_hint": 0.91, "asset_file": "fire_oak_street.png"}
+      }
+    },
+    {
+      "time_offset_seconds": 14,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.765, "lng": -122.408, "sector": "3"},
+        "content": "SEVERE DAMAGE: Gas line rupture at intersection of Oak and 5th Ave. Visible crack in pavement approximately 3 meters long. No visible flame but strong odor detected. Nearby residential buildings at risk. Traffic signal knocked over, blocking intersection.",
+        "source_type": "ground_camera",
+        "metadata": {"source": "SAR-3_camera", "confidence_hint": 0.68, "asset_file": "gas_rupture_intersection.png"}
+      }
+    },
+    {
+      "time_offset_seconds": 20,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.755, "lng": -122.415, "sector": "5"},
+        "content": "MODERATE DAMAGE: Partial facade collapse on commercial building at Harbor Street. Front wall material fallen onto sidewalk. Building appears structurally sound but access blocked. No visible casualties. Windows shattered on ground floor.",
+        "source_type": "first_responder_camera",
+        "metadata": {"source": "Engine_4_camera", "confidence_hint": 0.77, "asset_file": "facade_collapse_harbor.png"}
+      }
+    },
+    {
+      "_comment": "=== PHASE 4: MISINFORMATION SIGNAL (injected early) ===",
+      "time_offset_seconds": 26,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "BREAKING: MASSIVE GAS EXPLOSION AT METRO GENERAL HOSPITAL!!! HUNDREDS DEAD!!! ENTIRE BUILDING COLLAPSED!!! STAY AWAY FROM DOWNTOWN!!! #MetroCityQuake #BREAKING #Emergency",
+        "source_type": "social_media",
+        "location": {"name": "Metro General Hospital", "lat": 37.785, "lng": -122.405},
+        "metadata": {
+          "platform": "Twitter",
+          "account": "@DisasterAlertNews_2024",
+          "account_created": "2024-01-15",
+          "followers": 47,
+          "verified": false,
+          "expected_credibility": 0.19
+        }
+      }
+    },
+    {
+      "_comment": "=== Additional context signals for Phase 1 ===",
+      "time_offset_seconds": 28,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "audio",
+        "transcript": "Unit 7 to dispatch - confirmed mass casualty event at 500 Market Street. We have a full pancake collapse. I can hear at least 5 distinct voices calling for help from the debris. Approach from west side only - east side structurally unstable with active fire. Requesting immediate SAR deployment, minimum 3 ambulances, and ladder support. This is code red.",
+        "location": {"lat": 37.790, "lng": -122.402, "sector": "4"},
+        "source_type": "first_responder",
+        "metadata": {"asset_file": "radio_unit7_market_street.mp3"}
+      }
+    },
+    {
+      "_comment": "=== PHASE 2: BRIDGE CONTRADICTION (30-45s) ===",
+      "time_offset_seconds": 33,
+      "demo_delay_seconds": 1.0,
+      "event_type": "contradiction_inject",
+      "data": {
+        "entity": "Main Street Bridge",
+        "entity_type": "infrastructure",
+        "temporal_analysis": "Satellite image captured at 14:40 shows bridge intact with no visible structural damage. Radio dispatch at 15:01 reports complete collapse of main span. 21-minute temporal gap provides sufficient time for progressive collapse following earthquake. Requires aerial verification to resolve.",
+        "force_verdict": "CONTRADICTION",
+        "claims": [
+          {
+            "source": "radio_dispatch_15:01",
+            "source_type": "first_responder",
+            "claim": "Main Street Bridge has collapsed - main span down, completely impassable. Repeat: bridge is NOT accessible. Do not route emergency vehicles through Sector 2 bridge crossing. Use alternate Harbor Boulevard route.",
+            "confidence": 0.72,
+            "timestamp": "15:01"
+          },
+          {
+            "source": "satellite_img_14:40",
+            "source_type": "satellite",
+            "claim": "Main Street Bridge appears structurally intact from overhead satellite imagery. No visible collapse damage or major structural deformation observed. Bridge deck continuous across span. Surface appears undamaged.",
+            "confidence": 0.89,
+            "timestamp": "14:40"
+          }
+        ]
+      }
+    },
+    {
+      "_comment": "=== Context signal for hospital capacity ===",
+      "time_offset_seconds": 38,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "Metro General Hospital Status Update: Current ER capacity at 45% (90/200 beds occupied). OPERATIONAL and accepting all trauma cases. All surgical teams activated and standing by. Triage area established in parking structure. Hospital structure stable - no damage from earthquake. Recommend continued routing of critical patients to Metro General.",
+        "source_type": "official_report",
+        "location": {"name": "Metro General Hospital", "lat": 37.785, "lng": -122.405}
+      }
+    },
+    {
+      "_comment": "=== Additional casualty signal ===",
+      "time_offset_seconds": 42,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "audio",
+        "transcript": "This is a 911 call from Sarah Chen. I am trapped in my apartment at 847 Oak Street, third floor, Sector 3. The staircase has completely collapsed. There are 4 of us here including my two children, ages 6 and 9. We can hear other people trapped in the building. The walls are cracked and the building keeps shaking. Please send help immediately.",
+        "location": {"lat": 37.775, "lng": -122.420, "sector": "3"},
+        "source_type": "civilian",
+        "metadata": {"asset_file": "911_sarah_chen.mp3"}
+      }
+    },
+    {
+      "_comment": "=== Gas line contradiction for copilot context ===",
+      "time_offset_seconds": 48,
+      "demo_delay_seconds": 1.0,
+      "event_type": "contradiction_inject",
+      "data": {
+        "entity": "Sector 3 Gas Line Status",
+        "entity_type": "infrastructure",
+        "temporal_analysis": "Automated utility sensors report nominal pressure with no rupture detection, but civilian reports and ground observations indicate strong gas odor and visible ground crack. Sensor network may have failed or be reporting stale data. Requires immediate field verification by utility crews.",
+        "force_verdict": "CONTRADICTION",
+        "claims": [
+          {
+            "source": "pge_automated_sensor_14:55",
+            "source_type": "official_report",
+            "claim": "Sector 3 gas pressure readings nominal at all monitoring stations. No pressure drops detected. No rupture alerts triggered by automated system. Safe for emergency personnel to operate in area.",
+            "confidence": 0.82,
+            "timestamp": "14:55"
+          },
+          {
+            "source": "civilian_911_call_14:58",
+            "source_type": "civilian",
+            "claim": "Strong smell of natural gas on Oak Street near 5th Avenue intersection, Sector 3. I can hear a loud hissing sound. There is a visible crack in the road about 10 feet long. This is definitely a gas leak. Very dangerous. People are evacuating the block.",
+            "confidence": 0.65,
+            "timestamp": "14:58"
+          }
+        ]
+      }
+    },
+    {
+      "_comment": "=== PHASE 3: Bridge verification resolves contradiction ===",
+      "time_offset_seconds": 56,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.780, "lng": -122.410, "sector": "2"},
+        "content": "AERIAL VERIFICATION COMPLETE - Main Street Bridge: CONFIRMED CATASTROPHIC COLLAPSE. Western main span has failed completely - approximately 40% of bridge deck collapsed into waterway below. Structural cables severed. Eastern approach span still standing but showing severe stress fractures and deformation. Bridge is 100% IMPASSABLE for all vehicle traffic. Emergency routing must use Harbor Boulevard alternate. Vehicle debris visible on collapsed section - possible casualties on bridge at time of collapse.",
+        "source_type": "helicopter",
+        "metadata": {"source": "HELI-1_verification_mission", "mission": "bridge_status_verification", "confidence_hint": 0.95, "asset_file": "bridge_collapse_aerial.png"}
+      }
+    },
+    {
+      "_comment": "=== Additional context for planning agent ===",
+      "time_offset_seconds": 62,
+      "demo_delay_seconds": 1.0,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "911 Call Transcript (Call ID: 14:59:33-8472): Multiple callers reporting trapped occupants at Oak Street residential complex. Estimated 12-15 people trapped across 3 floors. Building stability questionable. One caller reports smell of gas in building. Access via front entrance blocked by debris. Rear fire escape may be viable entry point for SAR teams.",
+        "source_type": "911_transcript",
+        "location": {"name": "Oak Street Apartments", "lat": 37.775, "lng": -122.420, "sector": "3"}
+      }
+    },
+    {
+      "_comment": "=== Time marker before planning recommendation ===",
+      "time_offset_seconds": 68,
+      "demo_delay_seconds": 0.5,
+      "event_type": "time_marker",
+      "data": {"label": "🤖 Planning Agent analyzing resource allocation scenarios..."}
+    },
+    {
+      "_comment": "=== PHASE 3: Planning recommendation will be auto-generated ===",
+      "_comment_planning": "Planning agent should trigger around T+70-80s with recommendation for AMB-1, AMB-2, AMB-3 to Market Street incident. Tradeoffs will include: Sector 2 response time degradation, resource depletion in Sectors 1-2, delayed response for Oak Street civilians, and opportunity cost of not staging resources near bridge alternate route.",
+      "time_offset_seconds": 75,
+      "demo_delay_seconds": 2.0,
+      "event_type": "time_marker",
+      "data": {"label": "⏳ Resource allocation recommendation generated - check Decision Queue"}
+    },
+    {
+      "_comment": "=== Additional incident for copilot context about risk assessment ===",
+      "time_offset_seconds": 85,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "PG&E Field Crew Update: Gas leak at Oak/5th intersection confirmed. Estimated flow rate: 2000 cubic feet per minute. Main shutoff valve accessed but requires manual closure - ETA 15 minutes. Immediate evacuation radius expanded to 300 meters. Fire hazard assessment: EXTREME. Any ignition source in area could trigger explosion affecting 2-3 city blocks.",
+        "source_type": "utility_company",
+        "location": {"name": "Oak Street Gas Leak", "lat": 37.773, "lng": -122.418, "sector": "3"}
+      }
+    },
+    {
+      "_comment": "=== PHASE 5: Aftershock triggers confidence decay ===",
+      "time_offset_seconds": 120,
+      "demo_delay_seconds": 3.0,
+      "event_type": "aftershock",
+      "data": {
+        "magnitude": 4.2,
+        "epicenter": {"lat": 37.78, "lng": -122.41}
+      }
+    },
+    {
+      "_comment": "=== Post-aftershock damage update ===",
+      "time_offset_seconds": 125,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.771, "lng": -122.419, "sector": "3"},
+        "content": "Secondary collapse in Sector 3 following 4.2M aftershock. Three-story residential building on Elm Street - eastern wall complete failure. Debris field expanding into street. Active fire from earlier Oak Street incident now advancing toward this new collapse site. Additional casualties expected. Structural engineer assessment: multiple buildings in Sector 3 now critically unstable.",
+        "source_type": "ground_camera",
+        "metadata": {"source": "SAR-3_bodycam", "confidence_hint": 0.86, "asset_file": "secondary_collapse_aftershock.png"}
+      }
+    },
+    {
+      "_comment": "=== Final utility alert ===",
+      "time_offset_seconds": 130,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "PG&E CRITICAL ALERT: Aftershock has caused secondary gas line rupture at Elm Avenue and Oak Street intersection. TWO active gas leaks now in Sector 3 within 200 meters of each other. Combined evacuation radius: 400 meters. Gas flow rate critical. Main valve closure delayed due to aftershock damage. ETA now 35-40 minutes. EXTREME FIRE/EXPLOSION RISK. All units avoid Sector 3 unless life-safety critical.",
+        "source_type": "utility_company",
+        "location": {"name": "Sector 3 Gas Emergency Zone", "lat": 37.773, "lng": -122.418}
+      }
+    }
+  ]
+}

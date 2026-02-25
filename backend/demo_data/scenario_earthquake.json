@@ -1,0 +1,306 @@
+{
+  "scenario_id": "earthquake_001",
+  "scenario_name": "Metro City 6.8 Earthquake",
+  "description": "A 6.8 magnitude earthquake strikes Metro City. Multiple building collapses, fires, and infrastructure damage requiring coordinated emergency response.",
+  "city_name": "Metro City",
+  "map_center": {"lat": 37.78, "lng": -122.41},
+  "map_zoom": 13,
+  "demo_compression": 30,
+  "initial_event": {
+    "type": "earthquake",
+    "magnitude": 6.8,
+    "epicenter": {"lat": 37.78, "lng": -122.42},
+    "depth_km": 10
+  },
+  "duration_minutes": 90,
+  "initial_resources": {
+    "ambulances": [
+      {"id": "AMB-1", "sector": "1", "status": "available"},
+      {"id": "AMB-2", "sector": "1", "status": "available"},
+      {"id": "AMB-3", "sector": "2", "status": "available"},
+      {"id": "AMB-4", "sector": "2", "status": "available"},
+      {"id": "AMB-5", "sector": "3", "status": "available"},
+      {"id": "AMB-6", "sector": "3", "status": "available"},
+      {"id": "AMB-7", "sector": "4", "status": "available"},
+      {"id": "AMB-8", "sector": "4", "status": "available"},
+      {"id": "AMB-9", "sector": "5", "status": "available"},
+      {"id": "AMB-10", "sector": "5", "status": "available"},
+      {"id": "AMB-11", "sector": "1", "status": "available"},
+      {"id": "AMB-12", "sector": "3", "status": "available"}
+    ],
+    "fire_trucks": [
+      {"id": "ENGINE-1", "sector": "1", "status": "available"},
+      {"id": "ENGINE-2", "sector": "2", "status": "available"},
+      {"id": "ENGINE-3", "sector": "3", "status": "available"},
+      {"id": "ENGINE-4", "sector": "4", "status": "available"},
+      {"id": "LADDER-1", "sector": "1", "status": "available"},
+      {"id": "LADDER-2", "sector": "3", "status": "available"}
+    ],
+    "search_teams": [
+      {"id": "SAR-1", "sector": "1", "personnel": 6, "status": "available"},
+      {"id": "SAR-2", "sector": "2", "personnel": 6, "status": "available"},
+      {"id": "SAR-3", "sector": "3", "personnel": 6, "status": "available"},
+      {"id": "SAR-4", "sector": "4", "personnel": 6, "status": "available"}
+    ],
+    "helicopters": [
+      {"id": "HELI-1", "sector": "central", "status": "available"},
+      {"id": "HELI-2", "sector": "central", "status": "available"}
+    ]
+  },
+  "initial_locations": [
+    {
+      "id": "loc_metro_general",
+      "location_type": "hospital",
+      "name": "Metro General Hospital",
+      "lat": 37.7850,
+      "lng": -122.4050,
+      "capacity_total": 200,
+      "capacity_used": 90,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_st_marys",
+      "location_type": "hospital",
+      "name": "St. Mary's Medical",
+      "lat": 37.7620,
+      "lng": -122.4180,
+      "capacity_total": 150,
+      "capacity_used": 45,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_county_medical",
+      "location_type": "hospital",
+      "name": "County Medical Center",
+      "lat": 37.7480,
+      "lng": -122.4120,
+      "capacity_total": 100,
+      "capacity_used": 20,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_main_bridge",
+      "location_type": "bridge",
+      "name": "Main Street Bridge",
+      "lat": 37.7800,
+      "lng": -122.4100,
+      "status": "operational",
+      "accessibility": "accessible"
+    },
+    {
+      "id": "loc_market_building",
+      "location_type": "building",
+      "name": "500 Market Street",
+      "lat": 37.7900,
+      "lng": -122.4020,
+      "status": "damaged",
+      "accessibility": "blocked"
+    }
+  ],
+  "events": [
+    {
+      "time_offset_seconds": 5,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.790, "lng": -122.402, "sector": "4"},
+        "content": "Severe structural collapse at 500 Market Street. Multi-story building pancake collapse. Heavy debris field covering full block. Active fire visible in eastern section. Smoke rising. Possible survivors in debris.",
+        "source_type": "first_responder_camera",
+        "metadata": {"source": "Unit_7_camera"}
+      }
+    },
+    {
+      "time_offset_seconds": 8,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "OMG major collapse on Market Street!! Building completely down!! Everyone stay away!! People screaming!! #MetroCityQuake #Emergency",
+        "source_type": "social_media",
+        "location": {"name": "500 Market Street", "lat": 37.790, "lng": -122.402}
+      }
+    },
+    {
+      "time_offset_seconds": 12,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "audio",
+        "transcript": "Unit 7 to dispatch - code red at 500 Market Street. We have a full pancake collapse, floors 2 through 4. Multiple people trapped. I can hear at least 5 voices calling for help. Stairwells compromised, approach from west side only. Requesting SAR team and minimum 3 ambulances. This is a mass casualty incident.",
+        "location": {"lat": 37.790, "lng": -122.402, "sector": "4"},
+        "source_type": "first_responder"
+      }
+    },
+    {
+      "time_offset_seconds": 15,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.772, "lng": -122.418, "sector": "3"},
+        "content": "Active fire visible in Sector 3 residential district. Large smoke column rising. Fire spreading to adjacent structures. Two residential buildings affected. Possible gas feed.",
+        "source_type": "drone",
+        "metadata": {"source": "Drone_Alpha"}
+      }
+    },
+    {
+      "time_offset_seconds": 18,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "Metro General Hospital Status: Current ER capacity at 45% (90/200 beds occupied). Accepting trauma cases. All surgical teams activated. Recommend diverting non-critical cases to St. Mary's Medical Center.",
+        "source_type": "official_report",
+        "location": {"name": "Metro General Hospital", "lat": 37.785, "lng": -122.405}
+      }
+    },
+    {
+      "time_offset_seconds": 22,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "audio",
+        "transcript": "This is a 911 call - my name is Sarah Chen, I am trapped in my apartment at 847 Oak Street, third floor. The staircase has completely collapsed. There are 4 of us including my two children ages 6 and 9. The building is shaking. Please send help immediately. We cannot get out.",
+        "location": {"lat": 37.775, "lng": -122.420, "sector": "3"},
+        "source_type": "civilian"
+      }
+    },
+    {
+      "time_offset_seconds": 32,
+      "demo_delay_seconds": 1.5,
+      "event_type": "contradiction_inject",
+      "data": {
+        "entity": "Main Street Bridge",
+        "entity_type": "infrastructure",
+        "temporal_analysis": "Satellite image captured at 14:40 shows bridge intact. Audio report at 15:01 states bridge collapsed. 21-minute gap is sufficient time for collapse to occur post-earthquake.",
+        "force_verdict": "CONTRADICTION",
+        "claims": [
+          {
+            "source": "radio_dispatch_15:01",
+            "source_type": "first_responder",
+            "claim": "Main Street Bridge has collapsed - main span down, completely impassable. Do not route vehicles through Sector 2.",
+            "confidence": 0.72
+          },
+          {
+            "source": "satellite_img_14:40",
+            "source_type": "satellite",
+            "claim": "Main Street Bridge appears structurally intact - no visible collapse damage or major structural deformation observed from satellite.",
+            "confidence": 0.89
+          }
+        ]
+      }
+    },
+    {
+      "time_offset_seconds": 38,
+      "demo_delay_seconds": 1.5,
+      "event_type": "contradiction_inject",
+      "data": {
+        "entity": "Market Street Casualty Count",
+        "entity_type": "casualty_estimate",
+        "temporal_analysis": "On-scene audio report and official hospital intake report disagree on casualty numbers from the same incident within 8 minutes.",
+        "force_verdict": "CONTRADICTION",
+        "claims": [
+          {
+            "source": "unit7_radio_14:52",
+            "source_type": "first_responder",
+            "claim": "Minimum 12-15 casualties at Market Street collapse. Multiple non-responsive victims visible in debris. Mass casualty protocol required.",
+            "confidence": 0.78
+          },
+          {
+            "source": "metro_general_intake_15:00",
+            "source_type": "official_report",
+            "claim": "Metro General has received only 3 patients from Market Street incident so far. No mass casualty declaration warranted at this time.",
+            "confidence": 0.85
+          }
+        ]
+      }
+    },
+    {
+      "time_offset_seconds": 46,
+      "demo_delay_seconds": 1.5,
+      "event_type": "contradiction_inject",
+      "data": {
+        "entity": "Sector 3 Gas Line",
+        "entity_type": "infrastructure",
+        "temporal_analysis": "Utility company report and civilian report give conflicting information about the gas line status in Sector 3.",
+        "force_verdict": "CONTRADICTION",
+        "claims": [
+          {
+            "source": "pge_automated_sensor_14:55",
+            "source_type": "official_report",
+            "claim": "Sector 3 gas pressure nominal. No rupture detected by automated sensors. Safe for emergency personnel to enter.",
+            "confidence": 0.82
+          },
+          {
+            "source": "civilian_911_call_14:58",
+            "source_type": "civilian",
+            "claim": "Strong smell of gas on Oak Street, Sector 3. Hissing sound near the intersection. I can see a crack in the road. This is a gas leak emergency.",
+            "confidence": 0.65
+          }
+        ]
+      }
+    },
+    {
+      "time_offset_seconds": 55,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.780, "lng": -122.410, "sector": "2"},
+        "content": "HELI-1 AERIAL VERIFICATION - Main Street Bridge: CONFIRMED COLLAPSE. Western span has failed catastrophically. Approximately 40% of bridge deck collapsed into waterway. Eastern approach still standing but structurally compromised. Bridge is completely impassable. Emergency vehicles must use alternate route via Harbor Boulevard.",
+        "source_type": "helicopter",
+        "metadata": {"source": "HELI-1_verification", "mission": "bridge_verification"}
+      }
+    },
+    {
+      "time_offset_seconds": 68,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "911 Call Transcript: Caller at Oak Street and 5th Avenue, apartment 3B. Reports 4 people trapped including 2 children. Building partially collapsed. Multiple voices heard from adjacent units. No immediate fire hazard visible. Access via rear entrance possibly viable.",
+        "source_type": "911_transcript",
+        "location": {"name": "Oak Street Apartments", "lat": 37.775, "lng": -122.420}
+      }
+    },
+    {
+      "time_offset_seconds": 72,
+      "demo_delay_seconds": 1,
+      "event_type": "time_marker",
+      "data": {"label": "Planning Agent generating resource allocation recommendation..."}
+    },
+    {
+      "time_offset_seconds": 120,
+      "demo_delay_seconds": 3,
+      "event_type": "aftershock",
+      "data": {"magnitude": 4.2}
+    },
+    {
+      "time_offset_seconds": 125,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "image",
+        "location": {"lat": 37.771, "lng": -122.419, "sector": "3"},
+        "content": "Secondary collapse in Sector 3 following 4.2M aftershock. Three-story residential building on Elm Street partially collapsed - eastern wall failure. Active fire from Sector 3 advancing toward building. Additional casualties expected.",
+        "source_type": "ground_camera",
+        "metadata": {"source": "SAR-3_camera"}
+      }
+    },
+    {
+      "time_offset_seconds": 130,
+      "demo_delay_seconds": 1.5,
+      "event_type": "signal",
+      "data": {
+        "type": "text",
+        "content": "UTILITY ALERT - PG&E: Gas rupture detected at Oak Street and Elm Avenue intersection, Sector 3. Estimated flow rate high. Field repair crews dispatched, ETA 25 minutes. IMMEDIATE ACTION REQUIRED: Establish 200-meter evacuation radius. Do not allow open flames or electrical equipment in zone.",
+        "source_type": "utility_company",
+        "location": {"name": "Oak/Elm Gas Rupture", "lat": 37.773, "lng": -122.418}
+      }
+    }
+  ]
+}
